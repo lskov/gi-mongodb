@@ -1,4 +1,4 @@
-version: '3.6'
+version: '3'
 # Deploys MongoDB with customization scripts and container with Mongo client
 # https://fabianlee.org/2018/05/20/docker-using-docker-compose-to-link-a-mongodb-server-and-client/
 #
@@ -8,9 +8,9 @@ version: '3.6'
 
 
 services:
-  my-mongodb:
+  gi-mongodb:
     image: mongo
-    container_name: my-mongodb
+    container_name: gi-mongodb
     ports:
       - 27017:27017
     environment:
@@ -28,9 +28,9 @@ services:
 
   my-mongoclient:
     # build will get tagged with 'image'
-    build: ./my-mongoclient
-    image: my-mongoclient
-    container_name: my-mongoclient
+    build: ./gi-mongoclient
+    image: gi-mongoclient
+    container_name: gi-mongoclient
     environment:
       - MONGO_SERVER=my-mongodb
       - MONGO_INITDB_DATABASE=test
@@ -39,7 +39,7 @@ services:
     networks:
       - mongo_net
     depends_on:
-      - my-mongodb
+      - gi-mongodb
     
 volumes:
   # default dir on Ubuntu: /var/lib/docker/volumes

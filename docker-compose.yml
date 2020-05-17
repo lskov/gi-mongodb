@@ -26,7 +26,7 @@ services:
     networks:
       - mongo_net
 
-  my-mongoclient:
+  gi-mongoclient:
     # build will get tagged with 'image'
     build: ./gi-mongoclient
     image: gi-mongoclient

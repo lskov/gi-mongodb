@@ -1,4 +1,4 @@
-FROM alpine
+FROM alpine:edge
 RUN apk update &&\
-  apk add mongodb
+  apk add --no-cache mongodb
 CMD ["/bin/sleep","1d"]
